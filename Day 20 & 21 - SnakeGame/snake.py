@@ -33,6 +33,15 @@ class Snake:
         t.goto(pos)
         self.segments.append(t)
 
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        for pos in STARTING_POSITIONS:
+            self.add_segment(pos)
+        self.head = self.segments[0]
+        self.head.color('cyan')
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
